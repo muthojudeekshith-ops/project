@@ -27,3 +27,21 @@ document.querySelector(".z2").onclick = () => showScreen("interface4");
 document.querySelector(".z3").onclick = () => showScreen("interface5");
 document.querySelector(".z4").onclick = () => showScreen("interface6");
 document.querySelector(".z5").onclick = () => showScreen("interface7");
+// Deekshith click → show password screen
+function openPasswordScreen() {
+  document.getElementById("interface1").classList.add("hidden");
+  document.getElementById("passwordScreen").classList.remove("hidden");
+}
+
+// Password check
+function checkPassword() {
+  const pass = document.getElementById("passwordInput").value;
+  const error = document.getElementById("passError");
+
+  if (pass === "c5d9") {
+    document.getElementById("passwordScreen").classList.add("hidden");
+    document.getElementById("interface2").classList.remove("hidden");
+  } else {
+    error.style.display = "block";
+  }
+}
