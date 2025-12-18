@@ -145,4 +145,69 @@ body {
 #interface1 {
   position: relative;
 }
+/* password hint */
+.pass-hint {
+  position: absolute;
+  bottom: 10%;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #c5c5c5;
+  font-family: Arial, sans-serif;
+}
+
+/* interface 1 container */
+#interface1 {
+  position: relative;
+}
+
+/* password screen */
+.screen {
+  position: fixed;
+  inset: 0;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.hidden {
+  display: none;
+}
+
+.pass-box {
+  text-align: center;
+}
+
+.pass-box h3 {
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+.pass-box input {
+  padding: 10px;
+  width: 160px;
+  text-align: center;
+  font-size: 16px;
+  border: 1px solid #aaa;
+  outline: none;
+}
+
+.pass-box button {
+  margin-top: 15px;
+  padding: 8px 20px;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
+}
+
+#passError {
+  color: red;
+  font-size: 12px;
+  margin-top: 10px;
+  display: none;
+}
 
