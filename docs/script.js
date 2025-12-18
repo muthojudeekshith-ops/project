@@ -1,47 +1,55 @@
-const nameText = document.getElementById("nameText");
-
-const screens = document.querySelectorAll(".screen");
-
-function showScreen(id) {
-  screens.forEach(s => s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
+/* ================= GLOBAL ================= */
+function hideAllScreens() {
+  document.querySelectorAll("section.screen").forEach(s => {
+    s.classList.add("hidden");
+  });
 }
 
-/* Interface 1 → 2 */
-nameText.addEventListener("click", () => {
-  nameText.style.transform = "scale(3)";
-  nameText.style.opacity = "0";
-
+/* ================= INTERFACE 1 → PASSWORD ================= */
+function openPasswordScreen() {
+  // fade bubbles
   document.querySelectorAll(".bubble").forEach(b => {
     b.style.opacity = "0";
   });
 
-  setTimeout(() => {
-    showScreen("interface2");
-  }, 2000);
-});
+  // zoom name
+  const name = document.getElementById("name");
+  name.style.transform = "scale(3)";
+  name.style.opacity = "0";
 
-/* Click zones → specific interfaces */
-document.querySelector(".z1").onclick = () => showScreen("interface3");
-document.querySelector(".z2").onclick = () => showScreen("interface4");
-document.querySelector(".z3").onclick = () => showScreen("interface5");
-document.querySelector(".z4").onclick = () => showScreen("interface6");
-document.querySelector(".z5").onclick = () => showScreen("interface7");
-// Deekshith click → show password screen
-function openPasswordScreen() {
-  document.getElementById("interface1").classList.add("hidden");
-  document.getElementById("passwordScreen").classList.remove("hidden");
+  setTimeout(() => {
+    document.getElementById("interface1").classList.add("hidden");
+    document.getElementById("passwordScreen").classList.remove("hidden");
+  }, 1500);
 }
 
-// Password check
+/* ================= PASSWORD CHECK ================= */
 function checkPassword() {
-  const pass = document.getElementById("passwordInput").value;
+  const pass = document.getElementById("passwordInput").value.trim();
   const error = document.getElementById("passError");
 
   if (pass === "c5d9") {
+    error.style.display = "none";
     document.getElementById("passwordScreen").classList.add("hidden");
     document.getElementById("interface2").classList.remove("hidden");
   } else {
     error.style.display = "block";
   }
 }
+
+/* ================= ZONE CLICKS ================= */
+document.addEventListener("DOMContentLoaded", () => {
+
+  document.querySelector(".z1").onclick = () => openInfo("interface3");
+  document.querySelector(".z2").onclick = () => openInfo("interface4");
+  document.querySelector(".z3").onclick = () => openInfo("interface5");
+  document.querySelector(".z4").onclick = () => openInfo("interface6");
+  document.querySelector(".z5").onclick = () => openInfo("interface7");
+
+});
+
+function openInfo(id) {
+  hideAllScreens();
+  document.getElementById(id).classList.remove("hidden");
+}
+
